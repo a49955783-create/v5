@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>لوحة التحكم - مستشفى ريسبكت</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">
+      <img src="golden_logo.png" class="brand-logo" alt="شعار">
+      <span class="brand-title">مستشفى ريسبكت</span>
+    </div>
+    <div class="search-box">
+      <input id="searchInput" type="text" placeholder="ابحث بالاسم أو الرقم الوطني" oninput="renderCards()">
+      <span class="search-icon">🔍</span>
+    </div>
+  </header>
+
+  <div class="top-actions">
+    <button class="btn add" onclick="openAddModal()">إضافة</button>
+    <button class="btn danger" onclick="confirmDeleteAll()">حذف الكل</button>
+  </div>
+
+  <div class="tabs">
+    <button class="chip all" onclick="setTab('all')">الكل</button>
+    <button class="chip silver" onclick="setTab('فضي')">فضي</button>
+    <button class="chip gold" onclick="setTab('ذهبي')">ذهبي</button>
+    <button class="chip platinum" onclick="setTab('بلاتيني')">بلاتيني</button>
+    <button class="chip expired" onclick="setTab('منتهي')">منتهي</button>
+  </div>
+
+  <main id="cardsContainer" class="cards"></main>
+
+  <!-- Add Modal -->
+  <div id="addModal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2>بيانات التأمين</h2>
+        <button class="icon-btn" onclick="closeAddModal()">✖</button>
+      </div>
+      <div class="form-grid">
+        <div class="form-col">
+          <label class="label">الاسم</label>
+          <input id="nameInput" type="text" class="input" placeholder="الاسم">
+          <label class="label">الرقم الوطني</label>
+          <input id="natIdInput" type="text" class="input" placeholder="الرقم الوطني">
+          <label class="label">الفئة</label>
+          <select id="catInput" class="input">
+            <option>فضي</option>
+            <option>ذهبي</option>
+            <option>بلاتيني</option>
+          </select>
+          <label class="label">تاريخ الانتهاء</label>
+          <input id="expInput" type="date" class="input">
+          <div class="form-actions">
+            <button class="btn add" onclick="saveCard()">حفظ</button>
+            <button class="btn" onclick="closeAddModal()">إلغاء</button>
+          </div>
+        </div>
+        <div class="form-col">
+          <label class="label">الصورة</label>
+          <div class="preview-box">
+            <img id="previewImg" src="" alt="معاينة">
+          </div>
+          <input id="imgInput" type="file" accept="image/*" onchange="previewImage(event)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm Modal -->
+  <div id="confirmModal" class="modal hidden">
+    <div class="confirm-card">
+      <p id="confirmText">هل تريد الحذف؟</p>
+      <div class="confirm-actions">
+        <button class="btn danger" id="confirmYes">نعم</button>
+        <button class="btn" onclick="closeConfirm()">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

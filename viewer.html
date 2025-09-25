@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>أفراد الصحة - مستشفى ريسبكت</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">
+      <img src="golden_logo.png" class="brand-logo" alt="شعار">
+      <span class="brand-title">مستشفى ريسبكت</span>
+    </div>
+    <div class="search-box">
+      <input id="searchInput" type="text" placeholder="ابحث بالاسم أو الرقم الوطني" oninput="renderCards()">
+      <span class="search-icon">🔍</span>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button class="chip all" onclick="setTab('all')">الكل</button>
+    <button class="chip silver" onclick="setTab('فضي')">فضي</button>
+    <button class="chip gold" onclick="setTab('ذهبي')">ذهبي</button>
+    <button class="chip platinum" onclick="setTab('بلاتيني')">بلاتيني</button>
+    <button class="chip expired" onclick="setTab('منتهي')">منتهي</button>
+  </div>
+
+  <main id="cardsContainer" class="cards"></main>
+  <script src="script.js"></script>
+</body>
+</html>
